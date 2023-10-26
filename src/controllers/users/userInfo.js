@@ -6,7 +6,7 @@ const userInfo = async (req, res, next) => {
 
     // Consulta para obtener los datos del usuario
     const [users] = await connect.query(`
-      SELECT id, email, name, username, role
+      SELECT id, email, name, username, role, phone, address
       FROM users
     `);
 
@@ -17,7 +17,7 @@ const userInfo = async (req, res, next) => {
           `
          SELECT p.id as productId, p.name, p.price, s.date as soldDate
             FROM products p
-            JOIN sold s ON p.id = s.product_id
+            JOIN sales s ON p.id = s.product_id
             WHERE s.user_id = ?`,
           [user.id]
         );

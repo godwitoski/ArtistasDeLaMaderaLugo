@@ -7,7 +7,9 @@ const validatorInfoUser = (req, res, next) => {
         req.body.pwd &&
         req.body.repeatpwd &&
         req.body.name &&
-        req.body.username) ||
+        req.body.username &&
+        req.body.address &&
+        req.body.phone) ||
       (req.body.email &&
         req.body.pwd &&
         req.body.repeatpwd &&
@@ -32,6 +34,8 @@ const validatorInfoUser = (req, res, next) => {
           .message("Permite alfa")
           .required(),
         repeatpwd: hapiJoi.string(),
+        phone: hapiJoi.string(),
+        address: hapiJoi.string(),
         name: hapiJoi
           .string()
           .min(5)
@@ -84,7 +88,7 @@ const validatorInfoUser = (req, res, next) => {
     if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\sÇçñÑ]+$/.test(req.body.name)) {
       return res.status(400).send({
         status: "Error",
-        message: "Campo nombre no permite números ni caracteres especiales.",
+        message: "Introduzca un nombre válido",
       });
     }
 

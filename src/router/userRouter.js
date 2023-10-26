@@ -5,6 +5,7 @@ const router = express.Router();
 const isAdmin = require("../middlewares/isAdmin");
 const isUser = require("../middlewares/isUser");
 const validatorInfoUser = require("../middlewares/validatorInfoUser");
+const canEditUser = require("../middlewares/canEditUser");
 
 const {
   registerUser,
@@ -12,12 +13,25 @@ const {
   userInfo,
   seeMyUserCart,
   seeMyOrders,
+  seeMyProfile,
+  editMyUser,
 } = require("../controllers/users");
 
 router.post("/register", validatorInfoUser, registerUser);
 router.post("/login", loginUser);
-router.get("/users", isUser, isAdmin, userInfo);
+
 router.get("/user/mycart", isUser, seeMyUserCart);
+router.get("/user/myuser", isUser, seeMyProfile);
 router.get("/user/myorders", isUser, seeMyOrders);
+
+router.get("/users", isUser, isAdmin, userInfo);
+
+router.put(
+  "/user/editprofile",
+  isUser,
+  canEditUser,
+  validatorInfoUser,
+  editMyUser
+);
 
 module.exports = router;

@@ -5,7 +5,9 @@ const searchProduct = async (req, res, next) => {
 
   if (!name && !type) {
     return res.status(400).send({
-      error: 'Falta al menos un parámetro de búsqueda: "name" o "type".',
+      status: "Error",
+      message:
+        "Por favor, escribe el tipo de material o el nombre del producto que quieres buscar",
     });
   }
 
@@ -28,8 +30,8 @@ const searchProduct = async (req, res, next) => {
 
     if (productData.length === 0) {
       return res.status(404).send({
-        message:
-          "No se encontraron productos que coincidan con los criterios de búsqueda.",
+        status: "Error",
+        message: "No se encontraron productos .",
       });
     }
 

@@ -18,6 +18,8 @@ CREATE TABLE users (
     password VARCHAR(512) NOT NULL,
     name VARCHAR(512),
     username VARCHAR(100) UNIQUE NOT NULL,
+    address TEXT,
+    phone varchar(40),
     role ENUM("admin", "normal") DEFAULT "normal" NOT NULL,
     lastAuthUpdate DATETIME
 );
@@ -32,6 +34,7 @@ CREATE TABLE products (
     user_id INT UNSIGNED NOT NULL,
     sold BOOLEAN NOT NULL DEFAULT FALSE,
     ordered BOOLEAN NOT NULL DEFAULT FALSE,
+    cancelled BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -59,7 +62,7 @@ CREATE TABLE temporaryorders (
     email VARCHAR(512) NOT NULL,
     name VARCHAR(512),
     address TEXT,
-    phone varchar(30),
+    phone varchar(40),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );

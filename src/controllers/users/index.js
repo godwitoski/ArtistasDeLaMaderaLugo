@@ -3,6 +3,8 @@ const loginUser = require("./loginUser");
 const userInfo = require("./userInfo");
 const seeMyUserCart = require("./seeMyUserCart");
 const seeMyOrders = require("./seeMyOrders");
+const seeMyProfile = require("./seeMyProfile");
+const editMyUser = require("./editMyUser");
 
 module.exports = {
   registerUser,
@@ -10,4 +12,6 @@ module.exports = {
   userInfo,
   seeMyUserCart,
   seeMyOrders,
+  seeMyProfile,
+  editMyUser,
 };

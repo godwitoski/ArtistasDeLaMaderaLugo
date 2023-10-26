@@ -61,7 +61,7 @@ const addProduct = async (req, res, next) => {
     connect.release();
     return res.status(200).send({
       status: "OK",
-      message: "Las imágenes se cargaron correctamente.",
+      message: "Producto añadido correctamente",
     });
   } catch (error) {
     next(error);

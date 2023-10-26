@@ -14,12 +14,19 @@ const {
   addProductToUserCart,
   seeSingleProduct,
   orderProductsFromCart,
+  moveProductToSales,
+  getSalesInfo,
 } = require("../controllers/products");
+
+router.get("/products/sales", isUser, isAdmin, getSalesInfo);
 
 router.get("/products/search?", searchProduct);
 router.get("/products/:productId", seeSingleProduct);
-router.post("/products/addNew", isUser, isAdmin, validatorFiles, addProduct);
+
 router.post("/products/:productId/saveProduct", isUser, addProductToUserCart);
 router.post("/products/sendOrder", isUser, orderProductsFromCart);
+
+router.post("/products/addNew", isUser, isAdmin, validatorFiles, addProduct);
+router.post("/products/:productId/sales", isUser, isAdmin, moveProductToSales);
 
 module.exports = router;

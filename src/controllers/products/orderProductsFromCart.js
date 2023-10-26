@@ -78,6 +78,16 @@ const orderProductsFromCart = async (req, res, next) => {
       `,
         [productId]
       );
+
+      // Actualizar los campos "phone y address"
+      await connect.query(
+        `
+        UPDATE users
+        SET phone = ?, address = ?
+        WHERE id = ?
+      `,
+        [phone, address, idUser]
+      );
     }
 
     connect.release();
@@ -85,7 +95,7 @@ const orderProductsFromCart = async (req, res, next) => {
     return res.status(200).send({
       status: "OK",
       message:
-        "Pedido realizado con éxito. En breves nos podremos en contacto contigo",
+        "Pedido realizado con éxito. En breves nos pondremos en contacto contigo",
     });
   } catch (error) {
     next(error);

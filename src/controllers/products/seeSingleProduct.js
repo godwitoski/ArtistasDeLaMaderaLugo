@@ -16,9 +16,9 @@ const seeSingleProduct = async (req, res, next) => {
     );
 
     if (products.length === 0) {
-      return res.status(200).send({
-        status: "OK",
-        message: "Aún no hay productos",
+      return res.status(404).send({
+        status: "Error",
+        message: "El producto no ha sido encontrado",
       });
     }
 

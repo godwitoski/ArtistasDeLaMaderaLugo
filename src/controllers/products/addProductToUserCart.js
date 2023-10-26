@@ -51,7 +51,7 @@ const addProductToUserCart = async (req, res, next) => {
 
     res.status(200).send({
       status: "OK",
-      message: "Producto añadido correctamente",
+      message: "Producto añadido a tu carrito",
     });
   } catch (error) {
     next(error);

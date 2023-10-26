@@ -4,6 +4,8 @@ const seeProducts = require("./seeProducts");
 const addProductToUserCart = require("./addProductToUserCart");
 const seeSingleProduct = require("./seeSingleProduct");
 const orderProductsFromCart = require("./orderProductsFromCart");
+const moveProductToSales = require("./moveProductToSales");
+const getSalesInfo = require("./getSalesInfo");
 
 module.exports = {
   addProduct,
@@ -12,4 +14,6 @@ module.exports = {
   addProductToUserCart,
   seeSingleProduct,
   orderProductsFromCart,
+  moveProductToSales,
+  getSalesInfo,
 };
