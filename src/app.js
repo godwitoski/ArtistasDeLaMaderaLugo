@@ -12,6 +12,8 @@ const userRouter = require("../src/router/userRouter");
 const productsRouter = require("../src/router/productsRouter");
 const seeProducts = require("../src/controllers/products/seeProducts");
 
+server.use(cors({ origin: "*" }));
+
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 server.use(morgan("dev"));
