@@ -27,9 +27,11 @@ const addProduct = async (req, res, next) => {
 
     const { insertId } = result;
 
-    const photos = req.files.photos;
+    const photos = Array.isArray(req.files.photos)
+      ? req.files.photos
+      : [req.files.photos];
 
-    if (!Array.isArray(photos) || photos.length === 0) {
+    if (photos.length === 0) {
       return res.status(400).send({
         status: "Error",
         message: "Debes seleccionar al menos una foto.",
