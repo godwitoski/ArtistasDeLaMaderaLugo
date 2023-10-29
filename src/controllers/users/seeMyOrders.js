@@ -16,6 +16,7 @@ const seeMyOrders = async (req, res, next) => {
     `,
       [idUser]
     );
+    connect.release();
 
     if (orders.length === 0) {
       return res.status(400).send({

@@ -16,6 +16,7 @@ const seeMyUserCart = async (req, res) => {
     `,
       [idUser]
     );
+    connect.release();
 
     if (productsInCart.length === 0) {
       return res.status(200).send({

@@ -12,6 +12,7 @@ const seeMyProfile = async (req, res, next) => {
         `,
       [idUser]
     );
+    connect.release();
 
     if (user.length === 0) {
       return res.status(404).send({
@@ -23,7 +24,7 @@ const seeMyProfile = async (req, res, next) => {
 
     res.status(200).send({
       status: "OK",
-      data: user,
+      user: user,
     });
 
     connect.release();
