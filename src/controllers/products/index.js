@@ -6,6 +6,7 @@ const seeSingleProduct = require("./seeSingleProduct");
 const orderProductsFromCart = require("./orderProductsFromCart");
 const moveProductToSales = require("./moveProductToSales");
 const getSalesInfo = require("./getSalesInfo");
+const removeProductFromUserCart = require("./removeProductFromUserCart");
 
 module.exports = {
   addProduct,
@@ -16,4 +17,5 @@ module.exports = {
   orderProductsFromCart,
   moveProductToSales,
   getSalesInfo,
+  removeProductFromUserCart,
 };
