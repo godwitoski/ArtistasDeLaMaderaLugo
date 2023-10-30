@@ -22,6 +22,7 @@ const removeProductFromUserCart = async (req, res, next) => {
         message: "El producto no existe en tu carrito.",
       });
     }
+    connect.release();
 
     const [result] = await connect.query(
       `
@@ -30,6 +31,7 @@ const removeProductFromUserCart = async (req, res, next) => {
       `,
       [idUser, productId]
     );
+    console.log(result);
     connect.release();
 
     res.status(200).send({

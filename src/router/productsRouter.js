@@ -30,6 +30,6 @@ router.post("/products/sendOrder", isUser, orderProductsFromCart);
 router.post("/products/addNew", isUser, isAdmin, validatorFiles, addProduct);
 router.post("/products/:productId/sales", isUser, isAdmin, moveProductToSales);
 
-router.delete("/products/:productId", removeProductFromUserCart);
+router.delete("/products/:productId", isUser, removeProductFromUserCart);
 
 module.exports = router;
