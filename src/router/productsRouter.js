@@ -17,6 +17,7 @@ const {
   moveProductToSales,
   getSalesInfo,
   removeProductFromUserCart,
+  deleteProduct,
 } = require("../controllers/products");
 
 router.get("/products/sales", isUser, isAdmin, getSalesInfo);
@@ -31,5 +32,6 @@ router.post("/products/addNew", isUser, isAdmin, validatorFiles, addProduct);
 router.post("/products/:productId/sales", isUser, isAdmin, moveProductToSales);
 
 router.delete("/products/:productId", isUser, removeProductFromUserCart);
+router.delete("/product/:productId", isUser, isAdmin, deleteProduct);
 
 module.exports = router;
