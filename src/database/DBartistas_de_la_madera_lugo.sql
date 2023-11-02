@@ -34,7 +34,6 @@ CREATE TABLE products (
     user_id INT UNSIGNED NOT NULL,
     sold BOOLEAN NOT NULL DEFAULT FALSE,
     ordered BOOLEAN NOT NULL DEFAULT FALSE,
-    cancelled BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -68,9 +67,10 @@ CREATE TABLE temporaryorders (
 );
 
 CREATE TABLE orders (
-    product_id INT UNSIGNED PRIMARY KEY NOT NULL,
+    product_id INT UNSIGNED NOT NULL,
     date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     user_id INT UNSIGNED NOT NULL,
+    PRIMARY KEY (user_id, product_id),
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );

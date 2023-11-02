@@ -34,14 +34,23 @@ const orderProductsFromCart = async (req, res, next) => {
 
       const [productTemporary] = await connect.query(
         `
-        SELECT product_id 
+        SELECT id, user_id, product_id 
         FROM temporaryorders
         WHERE user_id = ? AND product_id = ?
       `,
         [idUser, productId]
       );
 
+      console.log(productTemporary);
       if (productTemporary.length > 0) {
+        await connect.query(
+          `
+          DELETE FROM cart
+          WHERE user_id = ? AND product_id = ?
+        `,
+          [idUser, productId]
+        );
+
         return res.status(400).send({
           status: "Error",
           message:
@@ -87,6 +96,15 @@ const orderProductsFromCart = async (req, res, next) => {
         WHERE id = ?
       `,
         [phone, address, idUser]
+      );
+
+      //Borrar de cart
+      await connect.query(
+        `
+          DELETE FROM cart
+          WHERE user_id = ? AND product_id = ?
+        `,
+        [idUser, productId]
       );
     }
 

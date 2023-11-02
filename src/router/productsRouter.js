@@ -18,10 +18,12 @@ const {
   getSalesInfo,
   removeProductFromUserCart,
   deleteProduct,
+  getTemporaryOrdersInfo,
 } = require("../controllers/products");
 
-router.get("/products/sales", isUser, isAdmin, getSalesInfo);
+router.get("/products/sales", isUser, getSalesInfo);
 
+router.get("/products/orders", isUser, isAdmin, getTemporaryOrdersInfo);
 router.get("/products/search?", searchProduct);
 router.get("/products/:productId", seeSingleProduct);
 

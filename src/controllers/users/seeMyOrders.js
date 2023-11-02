@@ -8,7 +8,7 @@ const seeMyOrders = async (req, res, next) => {
     // Consulta para obtener las órdenes del usuario
     const [orders] = await connect.query(
       `
-      SELECT p.name , p.price, o.date AS orderDate, p.sold, p.ordered, p.cancelled
+      SELECT o.product_id, p.name , p.price, o.date AS orderDate, p.sold, p.ordered, p.cancelled
       FROM orders o
       JOIN products p ON o.product_id = p.id
       WHERE o.user_id = ?

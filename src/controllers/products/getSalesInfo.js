@@ -9,7 +9,7 @@ const getSalesInfo = async (req, res, next) => {
 
     // Consulta para obtener ventas con filtro opcional por año y mes
     let query = `
-      SELECT p.name as productName, p.price, s.date as soldDate, u.name
+      SELECT s.user_id, s.product_id, p.name as productName, p.price, s.date as soldDate, u.name
       FROM sales s
       JOIN users u ON s.user_id = u.id
       JOIN products p ON s.product_id = p.id
