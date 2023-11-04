@@ -9,6 +9,7 @@ const getSalesInfo = require("./getSalesInfo");
 const removeProductFromUserCart = require("./removeProductFromUserCart");
 const deleteProduct = require("./deleteProduct");
 const getTemporaryOrdersInfo = require("./getTemporaryOrdersInfo");
+const cancelOrder = require("./cancelOrder");
 
 module.exports = {
   addProduct,
@@ -22,4 +23,5 @@ module.exports = {
   removeProductFromUserCart,
   deleteProduct,
   getTemporaryOrdersInfo,
+  cancelOrder,
 };

@@ -19,6 +19,7 @@ const {
   removeProductFromUserCart,
   deleteProduct,
   getTemporaryOrdersInfo,
+  cancelOrder,
 } = require("../controllers/products");
 
 router.get("/products/sales", isUser, getSalesInfo);
@@ -33,6 +34,7 @@ router.post("/products/sendOrder", isUser, orderProductsFromCart);
 router.post("/products/addNew", isUser, isAdmin, validatorFiles, addProduct);
 router.post("/products/:productId/sales", isUser, isAdmin, moveProductToSales);
 
+router.delete("/products/:productId/cancelOrder", isUser, isAdmin, cancelOrder);
 router.delete("/products/:productId", isUser, removeProductFromUserCart);
 router.delete("/product/:productId", isUser, isAdmin, deleteProduct);
 
