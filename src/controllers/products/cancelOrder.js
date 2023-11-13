@@ -21,6 +21,7 @@ const cancelOrder = async (req, res, next) => {
         message: "El producto no pudo ser encontrado.",
       });
     }
+    connect.release();
 
     const [cancelledProductInOrder] = await connect.query(
       `

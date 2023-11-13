@@ -41,7 +41,6 @@ const orderProductsFromCart = async (req, res, next) => {
         [idUser, productId]
       );
 
-      console.log(productTemporary);
       if (productTemporary.length > 0) {
         await connect.query(
           `

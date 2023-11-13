@@ -25,6 +25,8 @@ const seeMyUserCart = async (req, res) => {
       });
     }
 
+    connect.release();
+
     const productsCombine = await Promise.all(
       productsInCart.map(async (product) => {
         const [photosProduct] = await connect.query(

@@ -25,6 +25,7 @@ const deleteProduct = async (req, res, next) => {
         message: "El producto no existe, no se realizó ninguna eliminación.",
       });
     }
+    connect.release();
 
     try {
       // Eliminar el producto de las tablas que tienen restricciones de clave foránea
