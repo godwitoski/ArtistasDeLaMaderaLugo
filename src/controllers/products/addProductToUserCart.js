@@ -22,6 +22,7 @@ const addProductToUserCart = async (req, res, next) => {
         message: "El producto no existe.",
       });
     }
+    connect.release();
 
     // Verificar si el producto ya está en el carrito del usuario
     const [existingProduct] = await connect.query(

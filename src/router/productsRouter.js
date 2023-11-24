@@ -22,11 +22,12 @@ const {
   cancelOrder,
 } = require("../controllers/products");
 
+router.get("/products/search?", searchProduct);
+router.get("/products/:productId", seeSingleProduct);
+
 router.get("/products/sales", isUser, getSalesInfo);
 
 router.get("/products/orders", isUser, isAdmin, getTemporaryOrdersInfo);
-router.get("/products/search?", searchProduct);
-router.get("/products/:productId", seeSingleProduct);
 
 router.post("/products/:productId/saveProduct", isUser, addProductToUserCart);
 router.post("/products/sendOrder", isUser, orderProductsFromCart);

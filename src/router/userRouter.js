@@ -15,6 +15,7 @@ const {
   seeMyOrders,
   seeMyProfile,
   editMyUser,
+  deleteMySingleOrder,
 } = require("../controllers/users");
 
 router.post("/register", validatorInfoUser, registerUser);
@@ -33,5 +34,7 @@ router.put(
   validatorInfoUser,
   editMyUser
 );
+
+router.delete("/user/myorders/:productId", isUser, deleteMySingleOrder);
 
 module.exports = router;

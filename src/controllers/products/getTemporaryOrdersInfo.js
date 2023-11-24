@@ -28,6 +28,7 @@ const getTemporaryOrdersInfo = async (req, res, next) => {
         message: "No hay pedidos pendientes.",
       });
     }
+    connect.release();
 
     // Ejecutar la consulta para obtener las fotos de los productos
     const temporaryOrdersWithPhotos = await Promise.all(

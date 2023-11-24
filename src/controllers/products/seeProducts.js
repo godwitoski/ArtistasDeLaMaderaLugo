@@ -20,6 +20,8 @@ const seeProducts = async (req, res, next) => {
       });
     }
 
+    connect.release();
+
     // Realiza la segunda consulta para obtener las fotos de productos
     const productsCombine = await Promise.all(
       products.map(async (product) => {

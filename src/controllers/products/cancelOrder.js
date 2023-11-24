@@ -31,7 +31,11 @@ const cancelOrder = async (req, res, next) => {
     `,
       [productInTemporary[0].product_id, productInTemporary[0].user_id]
     );
-    cancelledProductInOrder[0].cancelado = true;
+    if (cancelledProductInOrder.length > 0) {
+      cancelledProductInOrder[0].cancelado = true;
+    }
+
+    connect.release();
 
     // Eliminar el producto de temporaryorders
     await connect.query(

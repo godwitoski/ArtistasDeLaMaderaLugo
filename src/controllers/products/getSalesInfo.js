@@ -18,6 +18,8 @@ const getSalesInfo = async (req, res, next) => {
     // Agregar filtro por año y mes si se proporcionan
     const params = [];
 
+    connect.release();
+
     if (year) {
       query += "WHERE YEAR(s.date) = ? ";
       params.push(year);
@@ -32,6 +34,8 @@ const getSalesInfo = async (req, res, next) => {
     }
 
     query += "ORDER BY s.date DESC";
+
+    connect.release();
 
     // Ejecutar la consulta con los parámetros proporcionados
     const [sales] = await connect.query(query, params);

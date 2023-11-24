@@ -13,6 +13,7 @@ const isUser = async (req, res, next) => {
         message: "Falta header de autorización: authorization",
       });
     }
+    connect.release();
 
     let tokenInfo;
 
@@ -21,6 +22,7 @@ const isUser = async (req, res, next) => {
     } catch (error) {
       return res.status(401).send({ status: 401, message: "Token Caducado" });
     }
+    connect.release();
 
     // Comprobar que la fecha del token sea válida respecto a lastAuthUpdate
     const [user] = await connect.query(

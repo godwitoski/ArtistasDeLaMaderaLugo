@@ -5,6 +5,7 @@ const seeMyUserCart = require("./seeMyUserCart");
 const seeMyOrders = require("./seeMyOrders");
 const seeMyProfile = require("./seeMyProfile");
 const editMyUser = require("./editMyUser");
+const deleteMySingleOrder = require("./deleteMySingleOrder");
 
 module.exports = {
   registerUser,
@@ -14,4 +15,5 @@ module.exports = {
   seeMyOrders,
   seeMyProfile,
   editMyUser,
+  deleteMySingleOrder,
 };

@@ -10,6 +10,8 @@ const userInfo = async (req, res, next) => {
       FROM users
     `);
 
+    connect.release();
+
     // Consulta para obtener los productos vendidos por el usuario
     const soldProductsWithUsers = await Promise.all(
       users.map(async (user) => {

@@ -31,6 +31,7 @@ const orderProductsFromCart = async (req, res, next) => {
           message: "Uno o más productos no están en tu carrito.",
         });
       }
+      connect.release();
 
       const [productTemporary] = await connect.query(
         `
@@ -56,6 +57,7 @@ const orderProductsFromCart = async (req, res, next) => {
             "Este producto ya ha sido enviado y está pendiente de revisión.",
         });
       }
+      connect.release();
 
       // Insertar en temporaryorders
       await connect.query(
