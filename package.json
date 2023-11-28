@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon -c nodemon.json"
   },
   "author": "",
   "license": "ISC",
@@ -18,8 +18,10 @@
     "jsonwebtoken": "^9.0.1",
     "morgan": "^1.10.0",
     "mysql2": "^3.5.2",
-    "nodemon": "^3.0.1",
     "sharp": "^0.32.4",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
