@@ -15,6 +15,8 @@ const seeSingleProduct = async (req, res, next) => {
       [productId]
     );
 
+    connect.release();
+
     if (products.length === 0) {
       return res.status(404).send({
         status: "Error",
