@@ -45,10 +45,16 @@ server.use((req, res, next) => {
 });
 
 // Middleware de manejo de errores generales
-server.use((err, req, res, next) => {
+server.use(async (err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message || "Error interno del servidor";
   console.error(err);
+
+  // Realiza el release de la conexión si está disponible
+  if (req.db) {
+    req.db.release();
+  }
+
   res.status(status).send({ status, message });
 });
 
